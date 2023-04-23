@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Philosopher&display=swap');
+
+:root {
+    --primary: #fb2e86;
+    --dark-blue: #101750;
+    --black: #000000;
+    --grey: #9096b2;
+    --sub-text-color: #8a8fb9;
+    --green: #08d15f;
+    --black-gold: #de9034;
+    --gold: #ffc416;
+    --color-wrap: #f4f4fc;
+    --blue :#151875;
+}
+
+* {
+    font-family: 'Philosopher', sans-serif;
+    font-family: 'Josefin', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    letter-spacing: 0.5px;
+}
+
+.d-flex {
+    display: flex;
+}
+.align-center {
+    align-items: center;
+}
+a{
+    text-decoration: none;
+}
+.max-width{
+    max-width: 2000px;
+}
+.margin-top-124{
+    margin-top: 124px ;
+}
