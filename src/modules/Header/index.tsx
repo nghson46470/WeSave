@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AxiosResponse } from 'axios'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import {
     MailIcon,
@@ -11,7 +11,6 @@ import {
     HeartIcon,
     CartIcon,
     Button,
-    Loading,
     ArrowIcon,
     LoadingDot,
     LogoutIcon,
@@ -26,6 +25,7 @@ import { getUnpaidCart, logout } from 'src/redux/slices'
 import { Iimage } from '~/interfaces'
 import { Tippy } from 'src/components/tippy'
 import { listCart } from 'src/components/fake-data/list-clothes'
+import { logo1 } from '~/assets'
 
 interface IProduct {
     id: number
@@ -47,15 +47,7 @@ interface IuserInfo {
     name: string
 }
 
-interface Icart {
-    thumbnail_url: string
-    name: string
-    price: number
-    amount: number
-    id: number
-}
-
-export const Header = () => {
+export const Header = ({ headerStyle = {} }) => {
     const [textSearch, setTextSearch] = useState<string>('')
     const [products, setProducts] = useState<IProduct[]>([])
     const [nameUser, setNameUser] = useState<string | null>('login')
@@ -125,10 +117,8 @@ export const Header = () => {
         if (userInfo?.name?.trim()) {
             setNameUser(userInfo?.name)
             checkLogin.current = config.routes.home
-            console.log(userInfo?.name)
         } else {
             checkLogin.current = config.routes.login
-            console.log(userInfo?.name)
         }
     }, [userInfo?.name])
 
@@ -143,10 +133,8 @@ export const Header = () => {
         }
     }
 
-    console.log('carts',carts)
-
     return (
-        <HeaderStyles checkToken={token} textSearch={textSearch}>
+        <HeaderStyles checkToken={token} textSearch={textSearch} {...headerStyle}>
             <div className="heading-bar-container align-center">
                 <div className="heading-bar-container_sub">
                     <div className="heading-contact-wrap d-flex ">
@@ -205,6 +193,7 @@ export const Header = () => {
                                     {token &&
                                         listCart &&
                                         listCart.length > 0 &&
+                                        // eslint-disable-next-line array-callback-return
                                         listCart.map((cart: any, index) => {
                                             if (index < 3) {
                                                 return (
@@ -242,9 +231,14 @@ export const Header = () => {
             </div>
             <div className="nav-header-container d-flex align-center">
                 <div className="nav-header-sub-container d-flex align-center">
-                    <p className="title" onClick={() => navigate('/')}>
+                    {/* <p className="title" onClick={() => navigate('/')}>
                         Hekto
-                    </p>
+                    </p> */}
+
+                    {
+                        // eslint-disable-next-line jsx-a11y/alt-text
+                        <img onClick={() => navigate('/')} src={logo1} style={{ width: '50px', height: '50px' }} />
+                    }
                     <div className="header-router-page d-flex">
                         <NavLink
                             className={({ isActive }) => (isActive ? 'isActive' : 'header-page-item')}
@@ -254,7 +248,7 @@ export const Header = () => {
                         </NavLink>
                         <Tippy
                             listItem={
-                                <div className='container-menu-sub'>
+                                <div className="container-menu-sub">
                                     <NavLink
                                         className={({ isActive }) => (isActive ? 'isActive ' : 'color-white')}
                                         to={config.routes.clothes}
@@ -262,7 +256,7 @@ export const Header = () => {
                                             display: 'block',
                                         }}
                                     >
-                                        clothes
+                                        Clothing
                                     </NavLink>
                                     <NavLink
                                         className={({ isActive }) => (isActive ? 'isActive' : 'color-white')}
@@ -272,11 +266,11 @@ export const Header = () => {
                                             color: 'white',
                                         }}
                                     >
-                                        Houseware
+                                        Furniture
                                     </NavLink>
-                                    <div className="color-white">cosmetics</div>
-                                    <div className="color-white">electronice device</div>
-                                    <div className="color-white">books</div>
+                                    <div className="color-white">Cosmetics</div>
+                                    <div className="color-white">Electronice device</div>
+                                    <div className="color-white">Books</div>
                                 </div>
                             }
                         >
@@ -294,48 +288,17 @@ export const Header = () => {
                         >
                             Products
                         </NavLink> */}
-                        <Tippy
-                            listItem={
-                                <div className='container-menu-sub'>
-                                    {/* <NavLink
-                                        className={({ isActive }) => (isActive ? 'isActive ' : 'color-white')}
-                                        to={config.routes.clothes}
-                                        style={{
-                                            display: 'block',
-                                        }}
-                                    >
-                                        clothes
-                                    </NavLink>
-                                    <NavLink
-                                        className={({ isActive }) => (isActive ? 'isActive' : 'color-white')}
-                                        to={config.routes.homeWare}
-                                        style={{
-                                            display: 'block',
-                                            color: 'white',
-                                        }}
-                                    >
-                                        Houseware
-                                    </NavLink> */}
-                                    <div className="color-white">Green monday</div>
-                                    <div className="color-white">Earth time</div>
-                                    <div className="color-white">Ngày hội kết nối xanh</div>
-                                    
-                                </div>
-                            }
+                        <NavLink
+                            className={({ isActive }) => (isActive ? 'isActive' : 'header-page-item')}
+                            to={config.routes.events}
                         >
-                            <div
-                                style={{
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                Campaigns
-                            </div>
-                        </Tippy>
+                            Events
+                        </NavLink>
                         <NavLink
                             className={({ isActive }) => (isActive ? 'isActive' : 'header-page-item')}
                             to={config.routes.verifiedShop}
                         >
-                            Verified shop
+                            Verified shops
                         </NavLink>
                         <NavLink
                             className={({ isActive }) => (isActive ? 'isActive' : 'header-page-item')}
@@ -464,6 +427,7 @@ const HeaderStyles = styled.div<{
         color: white;
         font-size: 18px;
         font-weight: 500;
+        border-bottom: 1px solid #e4e4e467;
     }
     .nav-header-container {
         padding: 20px 0px;
@@ -676,11 +640,11 @@ const HeaderStyles = styled.div<{
         opacity: 0.8;
         cursor: default;
     }
-    .container-menu-sub{
+    .container-menu-sub {
         width: 250px;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 16px;
         padding: 10px;
     }
 `

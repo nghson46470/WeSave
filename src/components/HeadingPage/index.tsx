@@ -42,7 +42,7 @@ export const HeadingPage = (props: IPropHeadingPage) => {
 
 const HeadingPageStyle = styled.div<{}>`
     height: 286px;
-    background-color: #f6f5ff;
+    background-color: rgb(139, 198, 114);
     display: flex;
     align-items: center;
     justify-content: center;

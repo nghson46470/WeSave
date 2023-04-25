@@ -62,7 +62,7 @@ export const ProductItem = (props: IProductItem) => {
                     +
                 </button>
             </div>
-            <div className="total-container price-text" title={String(totalPrice)}>${totalPrice}</div>
+            <div className="total-container price-text" title={String(totalPrice)}>$7</div>
         </ProductItemStyle>
     )
 }

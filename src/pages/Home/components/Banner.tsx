@@ -1,12 +1,12 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { bulbImg, chairImg } from '~/assets'
+import { bannerHome, bulbImg, chairImg } from '~/assets'
 import { Button } from '~/components'
 
-export const Banner = () => {
+export const Banner = ({ src }: any) => {
     return (
         <BannerStyle>
-            <div className="container_content_banner d-flex">
+            {/* <div className="container_content_banner d-flex">
                 <div className="text-content-wrap ">
                     <img className="bulbImg" src={bulbImg} alt="" />
                     <div className="sub-description">Best Furniture For Your Castle....</div>
@@ -22,7 +22,8 @@ export const Banner = () => {
                         <img className="chairImg" src={chairImg} alt="" />
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <img style={{ objectFit: 'cover', width: '100%' }} src={src} />
         </BannerStyle>
     )
 }
@@ -30,7 +31,7 @@ export const Banner = () => {
 const BannerStyle = styled.div<{}>`
     height: 764px;
     width: 100%;
-    background-color: #7ED957;
+    background-color: #7ed957;
     justify-content: center;
     display: flex;
     .container_content_banner {
@@ -74,5 +75,4 @@ const BannerStyle = styled.div<{}>`
         display: flex;
         align-items: center;
     }
-
 `

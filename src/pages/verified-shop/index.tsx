@@ -1,6 +1,6 @@
-import React, { CSSProperties, useEffect, useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { CSSProperties, useRef, useState } from 'react'
+import styled from 'styled-components'
+import {  useNavigate } from 'react-router-dom'
 import { AxiosResponse } from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import LazyLoad from 'react-lazyload'
@@ -10,12 +10,10 @@ import { HeadingPage, Loading } from '~/components'
 import { config } from '~/config'
 import { productApi } from '~/api'
 import { useAppDispatch, useAppSelector } from '~/redux/hook'
-import { useDispatch } from 'react-redux'
 import { getUnpaidCart } from 'src/redux/slices'
 import { Iimage } from '~/interfaces'
 import { useThrottle } from '~/Hook'
 import { ProductItem } from '../SearchResult/components/ProductItem'
-import { listClothes } from 'src/components/fake-data/list-clothes'
 import { listShop } from 'src/components/fake-data/list-shop'
 
 interface IProduct {
@@ -52,14 +50,14 @@ interface IProductItem {
 
 export const VerifiedShop = () => {
     const [listResult, setListResult] = useState<IlistResult[]>([])
-    const [showNotFound, setShowNotFound] = useState<boolean>(false)
-    const [loading, setLoading] = useState<boolean>(false)
+    const [showNotFound,] = useState<boolean>(false)
+    const [loading, ] = useState<boolean>(false)
     const [increment, setIncrement] = useState<number>(1)
-    const location = useLocation()
+    // const location = useLocation()
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const throttle = useThrottle(increment, 3000)
-    const textSearch = location.search.split('=')[1]
+    // const textSearch = location.search.split('=')[1]
     const fetchingProducts = useRef<Array<number | string>>([])
     const token = useAppSelector((state) => state.auth.token)
 
@@ -73,7 +71,7 @@ export const VerifiedShop = () => {
             path: config.routes.Page404,
         },
         {
-            name: 'Shop List',
+            name: 'Verified Shops List',
             path: config.routes.searchResult,
         },
     ]
@@ -172,7 +170,7 @@ export const VerifiedShop = () => {
 
     return (
         <>
-            <HeadingPage title="Shop List" breadCrumbs={breadcrumb} />
+            <HeadingPage title="Verified Shops List" breadCrumbs={breadcrumb} />
             <VerifiedShopStyle>
                 <div className="list-product-container">
                     {showNotFound && (
@@ -190,7 +188,11 @@ export const VerifiedShop = () => {
                                     placeholder={<Loading />}
                                 >
                                     <ProductItem
+                                        nameShop={product.name_shop}
+                                        addressShop={product.address}
+                                        phoneShop={product.phone_shop}
                                         isShop
+                                        stars={product.stars}
                                         key={index}
                                         images={product.images}
                                         title={`Shop code ${index+1}`}

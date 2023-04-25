@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { listFeatures } from 'src/components/fake-data'
 import { FeaturedProduct } from '../Home/components/FeaturedProduct'
 import { toast } from 'react-toastify'
 import { getUnpaidCart } from 'src/redux/slices'
@@ -80,7 +79,7 @@ export const ClothesPage = () => {
         <ClothesStyle>
             <div className="container-home-main d-flex">
                 <div className="featured-product-container d-flex max-width">
-                    <div className="title-featured-product text-title">Clothes</div>
+                    <div className="title-featured-product text-title">Clothing</div>
                     <div className="featured-products d-flex">
                         {listClothes.data &&
                             listClothes.data.length > 0 &&
@@ -111,7 +110,7 @@ export const ClothesPage = () => {
 const ClothesStyle = styled.div<{}>`
     width: 100%;
     .container-home-main {
-        margin: 120px 0px;
+        margin: 140px 0px;
         width: 100%;
         /* padding: 0px 150px; */
         flex-direction: column;

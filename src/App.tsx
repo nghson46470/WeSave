@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'
+import { Fragment, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import { routes } from '~/routes'
 import { VerifyLogin } from '~/layout';
@@ -16,6 +16,7 @@ function App() {
             dispatch(getUserInfo());
             dispatch(getUnpaidCart())
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     return (

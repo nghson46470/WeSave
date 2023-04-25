@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import styled, { css } from 'styled-components'
 import { Banner } from './Banner'
 import { Button } from '~/components'
+import { banner, banner2, bannerHome, profileShop } from '~/assets'
 
 export const Slider = () => {
     const renderIndicator = (clickHandle:any, isSelector: boolean) => (
@@ -25,9 +26,9 @@ export const Slider = () => {
                 renderIndicator={renderIndicator}
                 emulateTouch
             >
-                <Banner />
-                <Banner />
-                <Banner />
+                <Banner src={bannerHome} />
+                <Banner src={banner} />
+                <Banner src={banner2} />
             </Carousel>
         </SliderStyle>
     )

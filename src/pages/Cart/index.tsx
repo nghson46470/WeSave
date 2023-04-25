@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { CheckIcon } from 'src/components/icons'
-import { decrement, deleteProduct, getUnpaidCart, increment, updateUnpaidCart, changeValue } from 'src/redux/slices'
-import styled, { css } from 'styled-components'
-import { productApi } from '~/api'
+import { decrement, deleteProduct, increment, updateUnpaidCart, changeValue } from 'src/redux/slices'
+import styled from 'styled-components'
 import { Button, HeadingPage, Loading } from '~/components'
 import { config } from '~/config'
 import { useDebounce } from '~/Hook'
@@ -23,8 +22,8 @@ interface IProductItem {
 export const Cart = () => {
     const loading = useAppSelector((state) => state.cart.loading)
     const carts = useAppSelector((state) => state.cart)
-    const products = carts.products
     const navigate = useNavigate()
+
 
     const dispatch = useAppDispatch()
 
@@ -151,25 +150,25 @@ export const Cart = () => {
                         <div className="payment-form">
                             <div className="subtotal-wrap d-flex">
                                 <div className="title">Subtotals:</div>
-                                <p>${carts.subTotal}</p>
+                                <p>$24</p>
                             </div>
                             <div className="total-wrap d-flex">
                                 <div className="title">totals:</div>
-                                <p>${carts.total}</p>
+                                <p>$24</p>
                             </div>
                             <div className="shipping-wrap d-flex align-center">
                                 <CheckIcon />
                                 <p>Shipping & taxes calculated at checkout</p>
                             </div>
                             <Button
-                                onClick={products.length === 0 ? handleDisabled : () => navigate(config.routes.payment)}
+                                onClick={listCart.length === 0 ? handleDisabled : () => navigate(config.routes.payment)}
                                 text="Proceed To Checkout"
                                 btnWidth="100%"
                                 padding="12px "
                                 radius="3px"
                                 style={{ border: 'none' }}
                                 btnColor="#19D16F"
-                                disabled={products.length === 0 ? true : false}
+                                disabled={listCart.length === 0 ? true : false}
                             />
                         </div>
                     </div>

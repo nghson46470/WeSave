@@ -255,7 +255,7 @@ export const ProductDetail = () => {
                                 return (
                                     <FeaturedProduct
                                         key={index}
-                                        name={`${product.name}${index}`}
+                                        name={`clothes ${index+1}`}
                                         code={product.code}
                                         price={product.price}
                                         img={product.images}

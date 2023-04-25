@@ -1,34 +1,29 @@
-import { Button, FacebookIcon, HeartIcon, InsIcon, TwiterIcon, VoteIcon } from '~/components'
+import { Button, FacebookIcon, InsIcon, TwiterIcon, VoteIcon } from '~/components'
 import styled, { css } from 'styled-components'
 import { Iimage, IProductInfo } from '~/interfaces'
 import { useNavigate } from 'react-router-dom'
-import { config } from '~/config'
-import { useAppSelector } from '~/redux/hook'
 
 export const ProductInfo = (props: IProductInfo) => {
     const {
         name,
         price = 0,
         images,
-        discount = 0,
         followed,
-        handleClickHeart,
         added_to_cart,
         handleAddCard,
         handleClickThumbnailImage,
     } = props
     const navigate = useNavigate()
 
-    const discountPrice = discount ? price * (1 - discount / 100) : price
-    const token = useAppSelector((state) => state.auth.token)
 
-    console.log(images)
+
     return (
         <ProductDetailStyle followed={followed} added_to_cart={added_to_cart}>
             <div className="product">
                 <div className="left">
                     {images &&
                         images.length > 0 &&
+                        // eslint-disable-next-line array-callback-return
                         images.map((item: Iimage, index) => {
                             if (!item.is_thumbnail) {
                                 return (
@@ -48,6 +43,7 @@ export const ProductInfo = (props: IProductInfo) => {
                 <div className="right">
                     {images &&
                         images.length > 0 &&
+                        // eslint-disable-next-line array-callback-return
                         images.map((item, index) => {
                             if (item.is_thumbnail) {
                                 return <img key={index} src={item.image_url} alt="" />
@@ -64,14 +60,18 @@ export const ProductInfo = (props: IProductInfo) => {
                         <VoteIcon color="var(--gold)" />
                     </div>
                     <div className="price">
-                        <div className="discounted-price">${discountPrice}</div>
+                        <div className="discounted-price">${5.2}</div>
                         <del className="main">${price}</del>
                     </div>
                     <div className="color">Color</div>
                     <div className="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et
-                        volutpat sit.
+                        This high-quality regular-fit tee has a casually elegant vibe. Additionally, the unbelievably
+                        soft tri-blend fabric makes it extremely comfortable – once put on, impossible to take off.
                     </div>
+                    <div className="description">50% Polyester 25% Soft cotton 25% Rayon</div>
+                    <div className="description">TLight Fabric (4.3 oz/yd² (146 g/m²))</div>
+                    <div className="description">Regular fit - SIZE M</div>
+                    <div className="description" style={{fontWeight:600,color:'#4b54a1'}}>Condition: 95%</div>
                     <div className="actions">
                         <span className="add-to-cart">
                             <Button
@@ -83,12 +83,16 @@ export const ProductInfo = (props: IProductInfo) => {
                                 btnColor={added_to_cart ? '#6c6c6c' : 'var(--primary)'}
                             />
                         </span>
-                        <div className="follow" onClick={()=>navigate('/profile')}>
+                        <div className="follow" onClick={() => navigate('/profile')}>
                             {/* <HeartIcon color={followed ? 'white' : 'var(--dark-blue)'} /> */}
+                            {
+
+                            // eslint-disable-next-line jsx-a11y/alt-text
                             <img
-                                style={{ width: '100%', height: '100%' , borderRadius:'50%' }}
+                                style={{ width: '100%', height: '100%', borderRadius: '50%' }}
                                 src="https://down-ws-vn.img.susercontent.com/da75b8bf75f27cd8df06542cdaafce1f_tn"
                             />
+                            }
                         </div>
                     </div>
                     <div className="category">Categories</div>

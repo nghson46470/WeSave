@@ -1,7 +1,6 @@
 import { config } from '~/config'
-import { Button, HeadingPage } from '~/components'
 import { Footer, Header } from '~/modules'
-import { Route, useLocation, Navigate, Router, Routes } from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { ScrollTop } from './component/ScrollTop'
 
@@ -36,7 +35,7 @@ export const DefaultLayout = (props: { children: JSX.Element }) => {
 
     return (
         <div onScroll={handleScroll}>
-            <Header />
+            <Header headerStyle={{marginBottom:'100px'}} />
             {children}
             <Footer />
             <ScrollTop onClick={handleScroll} scrollTop={scrollTop} />

@@ -1,5 +1,6 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { logo1 } from '~/assets'
 import { Button, FacebookIcon, InsIcon, TwiterIcon } from '~/components'
 
 export const Footer = () => {
@@ -8,8 +9,15 @@ export const Footer = () => {
             <div className="footer-main-container">
                 <div className="container-content max-width">
                     <div className="info-container ">
-                        <h1 className="info-title mr30">Hekto</h1>
-                        <div className="email-container d-flex">
+                        {/* <h1 className="info-title mr30">Hekto</h1> */}
+                        {
+                            // eslint-disable-next-line jsx-a11y/alt-text
+                            <img src={logo1} style={{ width: '100px', height: '100px' }} />
+                        }
+                        <div
+                            className="email-container d
+                       -flex"
+                        >
                             <input type="email" className="input-email" placeholder="Enter Email Address" />
                             <Button text="Sign Up" btnWidth="140px" padding="10px 0px" radius="3px" />
                         </div>
@@ -111,7 +119,7 @@ const FooterStyle = styled.div<{}>`
         line-height: 19px;
         color: #8a8fb9;
     }
-    .email-container{
+    .email-container {
         margin: 20px 0px;
     }
 `

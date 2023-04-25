@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { listFeatures } from 'src/components/fake-data'
 import { FeaturedProduct } from '../Home/components/FeaturedProduct'
 import { toast } from 'react-toastify'
 import { getUnpaidCart } from 'src/redux/slices'
@@ -9,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '~/redux/hook'
 import { config } from '~/config'
 import styled from 'styled-components'
-import { listClothes } from 'src/components/fake-data/list-clothes'
 import { listCHomeWare } from 'src/components/fake-data/list-home-ware'
 
 interface IpropProducts {
@@ -81,7 +79,7 @@ export const HomeWare = () => {
         <ClothesStyle>
             <div className="container-home-main d-flex">
                 <div className="featured-product-container d-flex max-width">
-                    <div className="title-featured-product text-title">Home ware</div>
+                    <div className="title-featured-product text-title">Furniture</div>
                     <div className="featured-products d-flex">
                         {listCHomeWare.data &&
                             listCHomeWare.data.length > 0 &&
@@ -112,7 +110,7 @@ export const HomeWare = () => {
 const ClothesStyle = styled.div<{}>`
     width: 100%;
     .container-home-main {
-        margin: 120px 0px;
+        margin: 140px 0px;
         width: 100%;
         /* padding: 0px 150px; */
         flex-direction: column;

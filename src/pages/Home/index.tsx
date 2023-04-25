@@ -1,25 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { generatePath, Link, useNavigate } from 'react-router-dom'
-import { DeliveryIcon } from 'src/components/icons'
-import styled, { css } from 'styled-components'
-import { AxiosResponse } from 'axios'
+import styled from 'styled-components'
 import { ToastContainer, toast } from 'react-toastify'
-import _ from 'lodash'
 
-import { productApi, blogApi } from '~/api'
+import { productApi } from '~/api'
 import { Branches, rectangle } from '~/assets'
-import { Button, LoadingDot } from '~/components'
+import { Button } from '~/components'
 import { config } from '~/config'
 import { BannerSub } from './components/BannerSub'
 import { FeaturedProduct } from './components/FeaturedProduct'
-import { LatestBlog } from './components/LatestBlog'
 import { LatestProduct } from './components/LatestProduct'
 import { Slider } from './components/Slider'
 import { TrendingProducts } from './components/TrendingProducts'
 import { Offer } from '~/components'
 import { useAppDispatch, useAppSelector } from '~/redux/hook'
 import { getUnpaidCart } from 'src/redux/slices'
-import { useThrottle } from '~/Hook'
 import { listFeatures } from 'src/components/fake-data'
 import { lastestProduct } from 'src/components/fake-data/lastest-product'
 
@@ -40,13 +35,6 @@ interface Iimage {
     is_thumbnail: boolean
 }
 
-interface IblogProduct {
-    description: string
-    image_url: string
-    title: string
-    id: number
-    author: string
-}
 
 interface IProduct {
     followed: boolean
@@ -60,20 +48,20 @@ export interface Iresponse {
 
 export const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState<IpropProducts[]>([])
-    const [latestProducts, setLatestProducts] = useState<IpropProducts[]>([])
-    const [trendingProducts, setTrendingProducts] = useState<IpropProducts[]>([])
-    const [blogs, setBlogs] = useState<IblogProduct[]>([])
-    const [increment, setIncrement] = useState<number>(1)
-    const [products, setProducts] = useState<any>([])
-    const [runFunc, setRunFunc] = useState<boolean>(false)
-    const [active, setActive] = useState<boolean>(false)
-    const timer = useRef<any>()
+    // const [latestProducts, setLatestProducts] = useState<IpropProducts[]>([])
+    // const [trendingProducts, setTrendingProducts] = useState<IpropProducts[]>([])
+    // const [blogs, setBlogs] = useState<IblogProduct[]>([])
+    // const [increment, setIncrement] = useState<number>(1)
+    // const [products, setProducts] = useState<any>([])
+    // const [runFunc, setRunFunc] = useState<boolean>(false)
+    // const [active, setActive] = useState<boolean>(false)
+    // const timer = useRef<any>()
 
     const handleGetAllProducts = () => {
         productApi.getFeaturedList()?.then((res) => setFeaturedProducts(res.data))
-        productApi.getLatestList()?.then((res) => setLatestProducts(res.data))
-        productApi.getTrendingProduct()?.then((res) => setTrendingProducts(res.data))
-        blogApi.getList()?.then((res) => setBlogs(res.data))
+        // productApi.getLatestList()?.then((res) => setLatestProducts(res.data))
+        // productApi.getTrendingProduct()?.then((res) => setTrendingProducts(res.data))
+        // blogApi.getList()?.then((res) => setBlogs(res.data))
     }
 
     const fetchingProducts = useRef<Array<number | string>>([])
@@ -86,7 +74,7 @@ export const Home = () => {
     const fakeData = ['delivery', 'cashback', 'premium', 'support']
     const token = useAppSelector((state) => state.auth.token)
 
-    const throttle = useThrottle(increment, 2000)
+    // const throttle = useThrottle(increment, 2000)
 
     // useEffect(() => {
     //     if(increment===0){
@@ -105,42 +93,42 @@ export const Home = () => {
     // },4000)
     // debounce(12)
 
-    useEffect(() => {
-        console.log(active)
-        if (runFunc) {
-            timer.current = setTimeout(() => {
-                const followed = products.followed
-                if (fetchingProducts.current.length === 0) {
-                    const postApi = !active ? productApi.unFollow(products.id) : productApi.follow(products.id)
-                    fetchingProducts.current.push(products.id)
-                    postApi
-                        ?.then((res: any) => {
-                            const newProducts = featuredProducts.map((item) => {
-                                if (item.id === products.id) {
-                                    return {
-                                        ...item,
-                                        followed: res?.followed,
-                                    }
-                                } else {
-                                    return item
-                                }
-                            })
+    // useEffect(() => {
+    //     if (runFunc) {
+    //         timer.current = setTimeout(() => {
+    //             // const followed = products.followed
+    //             if (fetchingProducts.current.length === 0) {
+    //                 const postApi = !active ? productApi.unFollow(products.id) : productApi.follow(products.id)
+    //                 fetchingProducts.current.push(products.id)
+    //                 postApi
+    //                     ?.then((res: any) => {
+    //                         const newProducts = featuredProducts.map((item) => {
+    //                             if (item.id === products.id) {
+    //                                 return {
+    //                                     ...item,
+    //                                     followed: res?.followed,
+    //                                 }
+    //                             } else {
+    //                                 return item
+    //                             }
+    //                         })
 
-                            setFeaturedProducts(newProducts)
-                        })
-                        .catch(() => {
-                            toast.error('Have an error.')
-                        })
-                        .finally(() => {
-                            fetchingProducts.current = fetchingProducts.current.filter((id) => id !== products.id)
-                        })
-                }
-            }, 2000)
-        }
-        return () => {
-            clearTimeout(timer.current)
-        }
-    }, [active])
+    //                         setFeaturedProducts(newProducts)
+    //                     })
+    //                     .catch(() => {
+    //                         toast.error('Have an error.')
+    //                     })
+    //                     .finally(() => {
+    //                         fetchingProducts.current = fetchingProducts.current.filter((id) => id !== products.id)
+    //                     })
+    //             }
+    //         }, 2000)
+    //     }
+    //     return () => {
+    //         clearTimeout(timer.current)
+    //     }
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [active])
 
     const handleClickHeart = (product: IProduct, type: string) => {
         if (!token) {
@@ -226,7 +214,6 @@ export const Home = () => {
         }
     }
 
-    console.log('featuredProducts', featuredProducts)
 
     return (
         <HomeStyle>
@@ -242,7 +229,7 @@ export const Home = () => {
                                 return (
                                     <FeaturedProduct
                                         key={index}
-                                        name={product.name}
+                                        name={`clothes ${index+1}`}
                                         code={product.code}
                                         price={product.price}
                                         img={product.images}
@@ -299,10 +286,10 @@ export const Home = () => {
                 <div className="product-trending d-flex max-width">
                     {listFeatures.data &&
                         listFeatures.data.length > 0 &&
-                        listFeatures.data.map((item: any) => {
+                        listFeatures.data.map((item: any,index) => {
                             return (
                                 <TrendingProducts
-                                    name={item.name}
+                                    name={`product ${index}`}
                                     price={item.price}
                                     discount={item.discount}
                                     images={item.images}

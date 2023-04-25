@@ -14,6 +14,7 @@ export const config = {
         homeWare:'/home-Ware',
         profile: '/profile',
         verifiedShop: '/verified-shop',
+        events: '/events',
     },
 }
 

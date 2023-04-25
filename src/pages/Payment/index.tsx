@@ -212,28 +212,37 @@ export const Payment = () => {
                                     <div className="type ">
                                         <div className="text method-card selected">
                                             <p>Pay with Credit Card</p>
-                                            <img
-                                                style={{ width: '100px', objectFit: 'cover' }}
-                                                src="https://support.moqups.com/hc/article_attachments/115010765209/02._Your_Account_-_Logos_.jpg"
-                                            />
+                                            {
+                                                // eslint-disable-next-line jsx-a11y/alt-text
+                                                <img
+                                                    style={{ width: '100px', objectFit: 'cover' }}
+                                                    src="https://support.moqups.com/hc/article_attachments/115010765209/02._Your_Account_-_Logos_.jpg"
+                                                />
+                                            }
                                         </div>
                                     </div>
                                     <div className="type">
                                         <div className="text method-card">
                                             <p>Pay with PayPal</p>
-                                            <img
-                                                style={{ width: '100px', objectFit: 'cover' }}
-                                                src="https://tap2pay.me/wp-content/uploads/2018/12/PayPal-Header-720x480-1.jpg"
-                                            />
+                                            {
+                                                // eslint-disable-next-line jsx-a11y/alt-text
+                                                <img
+                                                    style={{ width: '100px', objectFit: 'cover' }}
+                                                    src="https://tap2pay.me/wp-content/uploads/2018/12/PayPal-Header-720x480-1.jpg"
+                                                />
+                                            }
                                         </div>
                                     </div>
                                     <div className="type">
                                         <div className="text method-card">
                                             <p>Pay with Amazon</p>
-                                            <img
-                                                style={{ width: '100px', objectFit: 'cover' }}
-                                                src="https://www.smartbusinessdaily.com/wp-content/uploads/2021/09/Amazon-payment-revision-needed.jpg"
-                                            />
+                                            {
+                                                // eslint-disable-next-line jsx-a11y/alt-text
+                                                <img
+                                                    style={{ width: '100px', objectFit: 'cover' }}
+                                                    src="https://www.smartbusinessdaily.com/wp-content/uploads/2021/09/Amazon-payment-revision-needed.jpg"
+                                                />
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -260,11 +269,11 @@ export const Payment = () => {
                             <div className="payment-form">
                                 <div className="subtotal-wrap d-flex">
                                     <div className="title">Subtotals:</div>
-                                    <p>${state.subTotal}</p>
+                                    <p>$24</p>
                                 </div>
                                 <div className="total-wrap d-flex">
                                     <div className="title">totals:</div>
-                                    <p>${state.total}</p>
+                                    <p>$24</p>
                                 </div>
                                 <div className="shipping-wrap d-flex align-center">
                                     <CheckIcon />
@@ -449,7 +458,7 @@ const PaymentStyle = styled.div<{}>`
     /* .selected {
         display: flex;
     } */
-    .types{
+    .types {
         gap: 20px;
         margin-top: 20px;
     }
@@ -464,11 +473,11 @@ const PaymentStyle = styled.div<{}>`
         box-shadow: 0px 8px 40px rgba(26, 17, 75, 0.248);
         cursor: pointer;
         gap: 10px;
-        p{
+        p {
             font-weight: 500;
         }
     }
-    .selected{
+    .selected {
         border: 2px solid #fb2e86;
     }
 `

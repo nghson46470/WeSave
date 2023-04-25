@@ -16,6 +16,7 @@ import { ClothesPage } from 'src/pages/clothes'
 import { HomeWare } from 'src/pages/home-ware'
 import { VerifiedShop } from 'src/pages/verified-shop'
 import { ProfileShopPage } from 'src/pages/profile-shop'
+import { EventPage } from 'src/pages/events'
 
 export const routes = [
     { layout: DefaultLayout, path: config.routes.home, element: Home },
@@ -60,5 +61,10 @@ export const routes = [
         layout: DefaultLayout,
         path: config.routes.profile,
         element: ProfileShopPage,
+    },
+    {
+        layout: DefaultLayout,
+        path: config.routes.events,
+        element: EventPage,
     },
 ]

@@ -1,27 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import { bannerSub } from '~/assets'
-import { Button, CircleIcon } from '~/components'
 
 export const BannerSub = () => {
-    const fakeData = [
-        {
-            description: 'All frames constructed with hardwood solids and laminates',
-            color: 'var(--primary)',
-        },
-        {
-            description: ' Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails',
-            color: 'var(--blue)',
-        },
-        {
-            description: 'Arms, backs and seats are structurally reinforced',
-            color: 'var(--gold)',
-        },
-    ]
+    // const fakeData = [
+    //     {
+    //         description: 'All frames constructed with hardwood solids and laminates',
+    //         color: 'var(--primary)',
+    //     },
+    //     {
+    //         description: ' Reinforced with double wood dowels, glue, screw - nails corner blocks and machine nails',
+    //         color: 'var(--blue)',
+    //     },
+    //     {
+    //         description: 'Arms, backs and seats are structurally reinforced',
+    //         color: 'var(--gold)',
+    //     },
+    // ]
 
     return (
         <BannerStyle>
-            <div className="img-banner-container">
+            {/* <div className="img-banner-container">
                 <img src={bannerSub} alt="" />
             </div>
             <div className="text-content-container d-flex">
@@ -45,7 +43,12 @@ export const BannerSub = () => {
                         <div className="price">$32.00</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            {
+
+            // eslint-disable-next-line jsx-a11y/alt-text
+            <img style={{width:'100%',objectFit:'cover',height:'100%'}} src="https://images.template.net/108270/website-digital-marketing-banner-j4258.jpeg"/>
+            }
         </BannerStyle>
     )
 }
@@ -55,7 +58,7 @@ const BannerStyle = styled.div<{}>`
     justify-content: center;
     align-items: center;
     background-color: #f1f0ff;
-    padding: 0% 15%;
+    /* padding: 0% 15%; */
     height: 579px;
     .text-content-container {
         flex-direction: column;

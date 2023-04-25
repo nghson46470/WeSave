@@ -16,14 +16,16 @@ interface IProductItem {
     addCart: boolean
     handleClickCart: () => void
     isShop?: boolean
+    nameShop?: string
+    addressShop?: string
+    phoneShop?: string
+    stars?:string
 }
 
 export const ProductItem = (props: IProductItem) => {
     const {
-        style,
         images,
         title,
-        description,
         price = 0,
         discount,
         handleClickHeart,
@@ -32,6 +34,10 @@ export const ProductItem = (props: IProductItem) => {
         onClick,
         addCart,
         handleClickCart,
+        nameShop,
+        addressShop,
+        phoneShop,
+        stars
     } = props
     const pirceDiscount = (price / 100) * (100 - discount)
     return (
@@ -40,9 +46,13 @@ export const ProductItem = (props: IProductItem) => {
                 <div className="img-content-product" onClick={onClick}>
                     {images &&
                         images.length > 0 &&
+                        // eslint-disable-next-line array-callback-return
                         images.map((image: Iimage, index) => {
                             if (image.is_thumbnail) {
-                                return <img key={index} src={image.image_url} alt="error image" />
+                                return (
+                                    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+                                    <img key={index} src={image.image_url} alt="error image" />
+                                )
                             }
                         })}
                 </div>
@@ -58,7 +68,7 @@ export const ProductItem = (props: IProductItem) => {
                         </div>
                     </div>
                     <div className="price-container d-flex">
-                        {pirceDiscount != 0 && (
+                        {pirceDiscount !== 0 && (
                             <>
                                 <div className="current-price">${pirceDiscount}</div>
                                 <div className="prev-price">${price}</div>
@@ -69,11 +79,20 @@ export const ProductItem = (props: IProductItem) => {
                             <VoteIcon color="var(--gold)" />
                             <VoteIcon color="var(--gold)" />
                             <VoteIcon color="var(--gold)" />
-                            <VoteIcon />
+                            <VoteIcon color={stars && "var(--gold)" } />
                         </div>
                     </div>
-                    <div className="description" onClick={onClick} title={description}>
+                    {/* <div className="description" onClick={onClick} title={description}>
                         {description}
+                    </div> */}
+                    <div onClick={onClick} title={nameShop}>
+                        {nameShop}
+                    </div>
+                    <div onClick={onClick} title={phoneShop}>
+                        {phoneShop}
+                    </div>
+                    <div onClick={onClick} title={addressShop}>
+                        {addressShop}
                     </div>
                     {!isShop && (
                         <div className="icon-container d-flex">
