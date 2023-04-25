@@ -195,7 +195,7 @@ export const VerifiedShop = () => {
                                         stars={product.stars}
                                         key={index}
                                         images={product.images}
-                                        title={`Shop code ${index+1}`}
+                                        title={`Shop ${index+1}`}
                                         description={product.description}
                                         // price={product.price}
                                         discount={product.discount}

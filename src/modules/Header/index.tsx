@@ -144,7 +144,7 @@ export const Header = ({ headerStyle = {} }) => {
                         </div>
                         <div className="mobile-wrap d-flex align-center">
                             <MobileIcon />
-                            <p>(12345)67890</p>
+                            <p>+84 946 965 228</p>
                         </div>
                     </div>
                     <div className="heading-bar-list d-flex">

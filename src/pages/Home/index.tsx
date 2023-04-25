@@ -245,7 +245,7 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="latest-product-container d-flex max-width">
-                    <div className="title-latest-product text-title">latest Products</div>
+                    <div className="title-latest-product text-title">Lastest Products</div>
                     <div className="latest-products d-flex">
                         {lastestProduct.data &&
                             lastestProduct.data.length > 0 &&
@@ -270,7 +270,7 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="shopex-offer-container d-flex max-width">
-                    <div className="title-shopex-offer text-title">What Shopex Offer!</div>
+                    <div className="title-shopex-offer text-title">What WeSave Offer!</div>
                     <div className="shopex-offer d-flex">
                         {fakeData.map((item: string) => {
                             return <Offer type={item} />
@@ -291,7 +291,7 @@ export const Home = () => {
                                 <TrendingProducts
                                     name={`product ${index}`}
                                     price={item.price}
-                                    discount={item.discount}
+                                    discount={3}
                                     images={item.images}
                                     followed={item.followed}
                                 />

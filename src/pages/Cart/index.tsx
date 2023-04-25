@@ -153,7 +153,7 @@ export const Cart = () => {
                                 <p>$24</p>
                             </div>
                             <div className="total-wrap d-flex">
-                                <div className="title">totals:</div>
+                                <div className="title">Totals:</div>
                                 <p>$24</p>
                             </div>
                             <div className="shipping-wrap d-flex align-center">

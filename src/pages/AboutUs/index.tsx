@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { banner, contact } from '~/assets'
+import { banner, contact, logo1 } from '~/assets'
 import styled, { css } from 'styled-components'
 import { config } from '~/config'
 import { Button, HeadingPage, Offer } from '~/components'
@@ -32,7 +32,7 @@ export const AboutUs = () => {
                     <div className="features-main d-flex">
                         <img style={{
                             objectFit:'contain',
-                        }} src={contact} alt="" />
+                        }} src={logo1} alt="" />
                         <div className="features-description-wrap d-flex">
                             <h2>Who We Are?</h2>
                             <p className="description">
