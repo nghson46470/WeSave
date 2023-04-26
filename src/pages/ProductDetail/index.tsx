@@ -100,11 +100,36 @@ export const ProductDetail = () => {
     const renderContent = () => {
         switch (tab) {
             case DESCRIPTION:
-                return <div>{moreInfo?.description}</div>
+                return (
+                    <div>
+                        This high-quality regular-fit tee has a casually elegant vibe. Additionally, the unbelievably
+                        soft tri-blend fabric makes it extremely comfortable – once put on, impossible to take off.
+                    </div>
+                )
             case ADDITIONAL_INFO:
-                return <div>{moreInfo?.additional_info}</div>
+                return (
+                    <div>
+                        <p>50% Polyester 25% Soft cotton 25% Rayon</p>
+                        <p>TLight Fabric (4.3 oz/yd² (146 g/m²))</p>
+                        <p>Regular fit - SIZE M</p>
+                    </div>
+                )
             case REVIEWS:
-                return <div>{moreInfo?.reviews}</div>
+                return (
+                    <div>
+                        <div style={{ display: 'flex', gap: '6px' }}>
+                            <h4>Customer Mei Mei: </h4>
+                            <p>
+                                Good quality, nice fabric, Even I think it must be like 99% new. The price is even
+                                cheaper when I buy a new one
+                            </p>
+                        </div>
+                        <div style={{ display: 'flex', marginTop: '16px', gap: '6px' }}>
+                            <h4>Customer SoSo: </h4>
+                            <p>Definitely worth the price. Even more!!!!</p>
+                        </div>
+                    </div>
+                )
             case VIDEO:
                 return <video width="400" controls autoPlay={true} muted src={moreInfo?.video} />
             default:
@@ -255,7 +280,7 @@ export const ProductDetail = () => {
                                 return (
                                     <FeaturedProduct
                                         key={index}
-                                        name={`clothes ${index+1}`}
+                                        name={`clothes ${index + 1}`}
                                         code={product.code}
                                         price={product.price}
                                         img={product.images}
