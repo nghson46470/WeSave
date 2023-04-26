@@ -13,7 +13,7 @@ export const AboutUs = () => {
             path: config.routes.home,
         },
         {
-            name: 'Pages',
+            name: 'Page',
             path: config.routes.Page404,
         },
         {
@@ -21,7 +21,28 @@ export const AboutUs = () => {
             path: config.routes.aboutUs,
         },
     ]
-    const fakeData = ['delivery', 'cashback', 'premium', 'support']
+    const fakeData = [
+        {
+            type:'delivery',
+            title:'Fast Delivery',
+            des:'Products are delivered to customers quickly, guaranteed by a team of enthusiastic shippers'
+        },
+        {
+            type:'cashback',
+            title:'Transparent Pricing',
+            des:'Commitment to open pricing and reliable product quality'
+        },
+        {
+            type:'premium',
+            title:'Prestigious Stores',
+            des:'Connecting stalls with quality products to consumers'
+        },
+        {
+            type:'support',
+            title:'24/7 Support',
+            des:'Support  provides possible responses to consumer inquiries'
+        },
+    ]
 
     return (
         <>
@@ -73,9 +94,9 @@ export const AboutUs = () => {
                     <div className="shopex-offer-container d-flex max-width">
                         <div className="title-shopex-offer text-title">Our Features</div>
                         <div className="shopex-offer d-flex">
-                            {fakeData.map((item: string, index) => {
-                                return <Offer key={index} type={item} />
-                            })}
+                        {fakeData.map((item: any) => {
+                            return <Offer type={item?.type} des={item.des} title={item.title} />
+                        })}
                         </div>
                     </div>
                 </div>

@@ -67,7 +67,7 @@ export const VerifiedShop = () => {
             path: config.routes.home,
         },
         {
-            name: 'page',
+            name: 'Page',
             path: config.routes.Page404,
         },
         {

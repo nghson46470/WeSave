@@ -22,14 +22,14 @@ export const Footer = () => {
                             <Button text="Sign Up" btnWidth="140px" padding="10px 0px" radius="3px" />
                         </div>
                         <p>Contact Info</p>
-                        <p>17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                        <p>98 Pham Van Dong, Bac Tu Liem District, Hanoi</p>
                     </div>
                     <div className="catagories-container">
                         <h4 className="title mr30">Catagories</h4>
                         <p>Laptops & Computers</p>
                         <p>Cameras & Photography</p>
                         <p>Smart Phones & Tablets</p>
-                        <p>Video Games & Consoles</p>
+                        <p>Clothings & cosmetics</p>
                         <p>Waterproof Headphones</p>
                     </div>
                     <div className="customer-container">
@@ -53,7 +53,7 @@ export const Footer = () => {
             </div>
             <div className="footer-sub-container">
                 <div className="container-content-sub max-width">
-                    <p>©Webecy - All Rights Reserved</p>
+                    <p>©WeSave - All Rights Reserved</p>
                     <div className="container-contact">
                         <FacebookIcon />
                         <InsIcon />

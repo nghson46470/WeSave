@@ -3,14 +3,16 @@ import { CashbackIcon, DeliveryIcon, PremiumIcon, SupportIcon } from '~/componen
 import styled, { css } from 'styled-components'
 
 interface IPropOfer {
-    type?: 'delivery' | 'cashback' | 'premium' | 'support' |string | undefined
+    type?: 'delivery' | 'cashback' | 'premium' | 'support' | string | undefined
+    title?: string
+    des?: string
 }
-interface IOfferObj<TValue>{
-    [key : string] : TValue
+interface IOfferObj<TValue> {
+    [key: string]: TValue
 }
 
 export const Offer = (props: IPropOfer) => {
-    const { type = 'delivery' } = props
+    const { type = 'delivery', title, des } = props
 
     const offerObject: IOfferObj<JSX.Element> = {
         delivery: <DeliveryIcon />,
@@ -25,10 +27,8 @@ export const Offer = (props: IPropOfer) => {
     return (
         <OfferStyle className="d-flex">
             <div className="icon">{handleChangeElement()}</div>
-            <div className="title-offer">24/7 Support</div>
-            <div className="description-offer">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.
-            </div>
+            <div className="title-offer">{title}</div>
+            <div className="description-offer">{des}</div>
         </OfferStyle>
     )
 }

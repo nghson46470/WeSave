@@ -71,7 +71,28 @@ export const Home = () => {
 
     const dispatch = useAppDispatch()
 
-    const fakeData = ['delivery', 'cashback', 'premium', 'support']
+    const fakeData = [
+        {
+            type:'delivery',
+            title:'Fast Delivery',
+            des:'Products are delivered to customers quickly, guaranteed by a team of enthusiastic shippers'
+        },
+        {
+            type:'cashback',
+            title:'Transparent Pricing',
+            des:'Commitment to open pricing and reliable product quality'
+        },
+        {
+            type:'premium',
+            title:'Prestigious Stores',
+            des:'Connecting stalls with quality products to consumers'
+        },
+        {
+            type:'support',
+            title:'24/7 Support',
+            des:'Support  provides possible responses to consumer inquiries'
+        },
+    ]
     const token = useAppSelector((state) => state.auth.token)
 
     // const throttle = useThrottle(increment, 2000)
@@ -245,7 +266,7 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="latest-product-container d-flex max-width">
-                    <div className="title-latest-product text-title">Lastest Products</div>
+                    <div className="title-latest-product text-title">Latest Products</div>
                     <div className="latest-products d-flex">
                         {lastestProduct.data &&
                             lastestProduct.data.length > 0 &&
@@ -270,17 +291,17 @@ export const Home = () => {
                     </div>
                 </div>
                 <div className="shopex-offer-container d-flex max-width">
-                    <div className="title-shopex-offer text-title">What WeSave Offer!</div>
+                    <div className="title-shopex-offer text-title">What WeSave Offers!</div>
                     <div className="shopex-offer d-flex">
-                        {fakeData.map((item: string) => {
-                            return <Offer type={item} />
+                        {fakeData.map((item: any) => {
+                            return <Offer type={item?.type} des={item.des} title={item.title} />
                         })}
                     </div>
                 </div>
             </div>
             <BannerSub />
             <div className="trending-product-container d-flex ">
-                <div className="desciption-trending">Get Leatest Update By Subscribe Our Newslater</div>
+                <div className="desciption-trending">Get Latest Updates By Subscribing to Our Newsletter</div>
                 <Button text="Shop Now" btnWidth="173px" padding="12px 34px" radius="3px" />
                 <div className="trending-title text-title">Trending Products</div>
                 <div className="product-trending d-flex max-width">

@@ -37,7 +37,7 @@ export const Cart = () => {
             path: config.routes.Page404,
         },
         {
-            name: 'shopping curt',
+            name: 'Shopping Cart',
             path: config.routes.cart,
         },
     ]
@@ -112,7 +112,7 @@ export const Cart = () => {
 
     return (
         <div>
-            <HeadingPage title="shopping curt" breadCrumbs={breadcrumb} />
+            <HeadingPage title="Shopping Cart" breadCrumbs={breadcrumb} />
             <CartStyle>
                 <div className="container-cart max-width">
                     <div className="products-container">
